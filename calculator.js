@@ -23,27 +23,43 @@ function divide(a, b) {
 }
 
 // Function required to run
-let num1 = Number(prompt("Enter the first number: "));
-let num2 = Number(prompt("Enter the second number: "));
-let operation = prompt("Enter operation (add, subtract, multiply, divide):");
-let result;
+const readline = require('readline').createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
 
-if (operation === add) {
-    result = add(a, b);
-}
-else if (operation === subtract) {
-    result = subtract(a, b)
-} else if (operation === multiply) {
-    result = multiply(a, b)
-} else if (operation === divide) {
-    result === divide(a, b)
-} else {
-    result = "Please try another operation, this does not work"
-}
+readline.question('Enter the first number: ', (num1) => {
+    readline.question('Enter operation (add, subtract, multiply, divide): ', (op) => {
+        readline.question('Enter the second number: ', (num2) => {
 
-// Update the history
-calcHistory.push(`${num1} ${operation} ${num2} = ${result}`);
+            // Perform conversion as it is necessary to get the right data type
+            let val1 = Number(num1);
+            let val2 = Number(num2);
+            let result;
 
-// Display functionality
-alert("Calculation:" + result);
-console.log("Calculation History:" + calcHistory);
+            // Utilize if statements for conditional logic flow
+            if (op === "add") {
+                result = add(val1, val2);
+            }
+            else if (op === "subtract") {
+                result = subtract(val1, val2);
+            } else if (op === "multiply") {
+                result = multiply(val1, val2);
+            } else if (op === "divide") {
+                result = divide(val1, val2);
+            } else {
+                result = "Please try another operation, this does not work";
+            }
+
+            // Update the calculation history with proper entries
+            calcHistory.push(`${num1} ${op} ${num2} = ${result}`);
+
+            // Display functionality
+            console.log("\nCalculation: " + result);
+            console.log("Calculation History: ", calcHistory);
+
+            // Make sure to close readline!
+            readline.close();
+        });
+    });
+});

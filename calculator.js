@@ -28,5 +28,22 @@ let num2 = Number(prompt("Enter the second number: "));
 let operation = prompt("Enter operation (add, subtract, multiply, divide):");
 let result;
 
-function execute(num1, num2, operation)
+if (operation === add) {
+    result = add(a, b);
+}
+else if (operation === subtract) {
+    result = subtract(a, b)
+} else if (operation === multiply) {
+    result = multiply(a, b)
+} else if (operation === divide) {
+    result === divide(a, b)
+} else {
+    result = "Please try another operation, this does not work"
+}
 
+// Update the history
+calcHistory.push(`${num1} ${operation} ${num2} = ${result}`);
+
+// Display functionality
+alert("Calculation:" + result);
+console.log("Calculation History:" + calcHistory);

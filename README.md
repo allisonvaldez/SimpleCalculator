@@ -1,4 +1,4 @@
-# Project Title
+# Simple Java Calculator
 This is a simple Javascript calculator. It will:
  * Implement functions for addition, subtraction, multiplication, and division.
  *Store each calculation’s details in an array.
